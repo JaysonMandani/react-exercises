@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require_tree ./components
 
 modulejs.define('jquery', function() {
   return jQuery;
