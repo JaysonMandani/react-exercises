@@ -25,7 +25,7 @@ modulejs.define('react', React);
 
 $(function() {
   var React = modulejs.require('react');
-  var TodoShow = modulejs.require('todoShow');
-  var view = React.createFactory(TodoShow);
+  var Task = modulejs.require('task');
+  var view = React.createFactory(Task);
   React.render(view(), $('#tasks-index')[0]);
 })

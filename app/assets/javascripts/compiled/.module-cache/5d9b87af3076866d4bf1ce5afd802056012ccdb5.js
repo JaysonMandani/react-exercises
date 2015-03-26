@@ -1,15 +1,12 @@
 modulejs.define('task', ['react'], function(React){
 
-
-	var Task = React.createClass({
+	var task = React.createClass({displayName: "task",
 		render: function() {
 			return (
-				input
+				React.createElement("span", null, " test ")
 			)
 		}
 	})
-
-	return Task
 
 
 })
