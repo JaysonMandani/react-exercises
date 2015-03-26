@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
-    render json: @tasks
+    @tasks = Task.all.to_json
   end
 
   def create
