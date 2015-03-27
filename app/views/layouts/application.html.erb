@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="content">
 <%= yield %>
+</div>
+<% unless params[:js] == "broken" %>
+  <%= javascript_include_tag "application" %>
+<% end %>
+
 
 </body>
 </html>

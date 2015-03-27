@@ -26,5 +26,6 @@ $(function() {
   var React = modulejs.require('react');
   var Task = modulejs.require('task');
   var view = React.createFactory(Task);
-  React.render(view(), $('#tasks-index')[0]);
+  var parse_data = $.parseJSON($('#tasks-index').html());
+  React.render(view(parse_data[0]), $('#tasks')[0]);
 })
