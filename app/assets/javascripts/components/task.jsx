@@ -1,5 +1,4 @@
-modulejs.define('task', ['react', 'taskForm', 'jquery'], function(React, TaskForm, $){
-
+modulejs.define('task', ['react', 'taskForm', 'jquery', 'taskList'], function(React, TaskForm, $, TaskList){ 
 	var Task = React.createClass({
     getInitialState: function() {
       return this.props;
@@ -20,12 +19,13 @@ modulejs.define('task', ['react', 'taskForm', 'jquery'], function(React, TaskFor
     },
 
 		render: function() {
-      console.log(this.props);
       return (
           <div className="comment-box">
+            <TaskList taskListNodes={ this.state.tasks } />
+
             <hr />
             <h2>Create Task</h2>
-            <TaskForm onTaskSubmit={this.handleTaskSubmit}/>
+            <TaskForm form={this.state.form} onTaskSubmit={this.handleTaskSubmit}/>
           </div>
         )
 		}

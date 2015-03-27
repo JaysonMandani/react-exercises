@@ -1,6 +1,13 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.to_json
+    @presenter = {
+      :tasks => Task.all,
+      :form => {
+        :action => tasks_path,
+        :csrf_param => request_forgery_protection_token,
+        :csrf_token => form_authenticity_token
+      }
+    }
   end
 
   def create
@@ -8,7 +15,7 @@ class TasksController < ApplicationController
     @task.save
 
     if request.xhr?
-      render :json => @task
+      render :json => Task.all
     else
       redirect_to tasks_path
     end
