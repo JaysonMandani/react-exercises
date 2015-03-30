@@ -4,11 +4,11 @@ modulejs.define('task', ['react', 'taskForm', 'jquery', 'taskList'], function(Re
       return this.props;
     },
 
-    handleTaskSubmit: function(formData, action) {
+    handleTaskSubmit: function(formData, type, id) {
       return $.ajax({
         data: formData,
-        url: action,
-        type: "POST",
+        url: this.state.form.action + "/" + id,
+        type: type,
         dataType: "json",
         success: (function(data) {
           return this.setState({
@@ -19,13 +19,13 @@ modulejs.define('task', ['react', 'taskForm', 'jquery', 'taskList'], function(Re
     },
 
 		render: function() {
+      React.render(<TaskForm form={ this.state.form } onTaskSubmit={ this.handleTaskSubmit }/>, document.getElementById('task-form'));
       return (
-          <div className="comment-box">
-            <TaskList taskListNodes={ this.state.tasks } />
+          <div className="task-box">
+            <TaskList taskListNodes={ this.state.tasks } form={ this.state.form } onTaskSubmit={ this.handleTaskSubmit } />
 
             <hr />
-            <h2>Create Task</h2>
-            <TaskForm form={this.state.form} onTaskSubmit={this.handleTaskSubmit}/>
+            <center><h2>Create Task</h2></center>
           </div>
         )
 		}

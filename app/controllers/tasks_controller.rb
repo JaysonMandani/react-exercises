@@ -15,9 +15,35 @@ class TasksController < ApplicationController
     @task.save
 
     if request.xhr?
-      render :json => Task.all
+      render json: Task.all
     else
       redirect_to tasks_path
+    end
+  end
+
+  def update
+    task = Task.find params[:id]
+
+    if task.update task_params
+      render json: Task.all
+    else
+      render json: {
+        errors: task.errors.full_messages,
+        status: 400
+      }
+    end
+  end
+
+  def destroy
+    task = Task.find params[:id]
+
+    if task.destroy
+      render json: Task.all
+    else
+      render json: {
+        errors: task.errors.full_messages,
+        status: 400
+      }
     end
   end
 
