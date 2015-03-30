@@ -8,9 +8,9 @@ modulejs.define('taskStore', ['underscore', 'eventEmitter', 'jquery', 'taskDispa
   var TaskStore = {
     all: function() {
       if (tasks.size == 0) {
-        _.each($.parseJSON($('#tasks-index').html()))
+        _.each($.parseJSON($('#tasks-index').html())[0]['tasks'], function(task) { create(task) })
       }
-
+      console.log(tasks)
       return tasks;
     },
 
