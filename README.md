@@ -1,1 +1,1 @@
-# react-exercises
+# task-exercises
